@@ -96,15 +96,15 @@ const Portfolio = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-12 stagger-animation">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
+              className={`px-6 py-3 rounded-full font-medium interactive-button ripple-effect ${
                 selectedCategory === category.id
-                  ? 'bg-cyan-500 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 hover:bg-cyan-100 hover:text-cyan-700'
+                  ? 'bg-cyan-500 text-white shadow-lg animate-glow'
+                  : 'bg-gray-100 text-gray-600 hover:bg-cyan-100 hover:text-cyan-700 hover-glow'
               }`}
             >
               {category.name}
@@ -113,26 +113,26 @@ const Portfolio = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-4 hover-glow card animate-slide-up animate-stagger-${project.id}`}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg interactive-card hover-glow animate-scale-in"
             >
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500 parallax-element"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-gradient">
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex items-center justify-between">
                       <div className="text-white">
                         <div className="text-sm opacity-75">{project.client}</div>
                         <div className="text-sm opacity-75">{project.year}</div>
                       </div>
-                      <button className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-all duration-300 hover-scale">
+                      <button className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg interactive-button animate-pulse-slow">
                         <ExternalLink className="w-5 h-5" />
                       </button>
                     </div>
@@ -141,11 +141,11 @@ const Portfolio = () => {
               </div>
 
               <div className="p-6">
-                <div className="inline-block bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium mb-3 capitalize hover-scale">
+                <div className="inline-block bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium mb-3 capitalize animate-pulse-slow">
                   {project.category}
                 </div>
                 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-600 transition-colors duration-200 text-shimmer">
                   {project.title}
                 </h3>
                 
@@ -158,8 +158,8 @@ const Portfolio = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16 animate-scale-in">
-          <p className="text-lg text-gray-600 mb-6">
+        <div className="text-center mt-16 animate-fade-in">
+          <p className="text-lg text-gray-600 mb-6 animate-slide-up">
             Ready to see your project here? Let's create something amazing together!
           </p>
           <button
@@ -169,7 +169,7 @@ const Portfolio = () => {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="inline-flex items-center space-x-2 bg-cyan-500 text-white px-8 py-4 rounded-lg hover:bg-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-2 hover-glow"
+            className="inline-flex items-center space-x-2 bg-cyan-500 text-white px-8 py-4 rounded-lg interactive-button ripple-effect animate-glow"
           >
             <span className="font-semibold">Start Your Project</span>
             <ExternalLink className="w-5 h-5" />

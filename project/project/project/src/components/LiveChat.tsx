@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, Clock } from 'lucide-react';
-import { createServiceHubAssistant, getQuickResponses } from '../utils/chatbot-responses';
 
 interface Message {
   id: number;
@@ -14,14 +13,13 @@ const LiveChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hi, I'm ServiceHub Assistant! 😊 How can I help you today? Whether you need design services, have questions about pricing, or just want to chat - I'm here for you!",
+      text: "Hi! I'm here to help you with your project needs. What service are you looking for?",
       sender: 'bot',
       timestamp: new Date(),
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [assistant] = useState(() => createServiceHubAssistant());
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -33,12 +31,34 @@ const LiveChat = () => {
   }, [messages]);
 
   const quickResponses = [
-    ...getQuickResponses()
+    "I need a logo design",
+    "Website design quote",
+    "Content writing help",
+    "Social media graphics",
+    "What's your pricing?",
   ];
 
-  // Enhanced ServiceHub Assistant responses
-  const getServiceHubResponse = (userMessage: string): string => {
-    return assistant.generateResponse(userMessage);
+  const botResponses = {
+    "logo": "Great! I'd love to help with your logo design. Logo packages start from ₹1,000 and include multiple concepts, revisions, and final files. What's your business about?",
+    "website": "Perfect! Website design is one of my specialties. Prices start from ₹3,000 for basic sites. Do you need e-commerce functionality or just informational pages?",
+    "content": "Content writing is available starting from ₹2 per word. I can help with blog posts, website copy, product descriptions, and more. What type of content do you need?",
+    "social": "Social media graphics start from ₹150 per post. I can create Instagram posts, Facebook covers, stories, and complete social media kits. How many posts do you need?",
+    "pricing": "My pricing is very student-friendly! Logo design: ₹1,000-5,000, Web design: ₹3,000-15,000, Content writing: ₹2/word, Graphics: ₹150-1,000. Students get 20% off!",
+    "student": "Awesome! I offer 20% student discount on all services. Just show me your student ID. What project are you working on?",
+    "default": "That sounds interesting! Let me connect you with more details. You can also fill out the contact form below for a detailed quote. What specific requirements do you have?"
+  };
+
+  const getBotResponse = (userMessage: string): string => {
+    const message = userMessage.toLowerCase();
+    
+    if (message.includes('logo') || message.includes('brand')) return botResponses.logo;
+    if (message.includes('website') || message.includes('web')) return botResponses.website;
+    if (message.includes('content') || message.includes('writing') || message.includes('blog')) return botResponses.content;
+    if (message.includes('social') || message.includes('instagram') || message.includes('facebook')) return botResponses.social;
+    if (message.includes('price') || message.includes('cost') || message.includes('quote')) return botResponses.pricing;
+    if (message.includes('student') || message.includes('discount')) return botResponses.student;
+    
+    return botResponses.default;
   };
 
   const sendMessage = async () => {
@@ -59,7 +79,7 @@ const LiveChat = () => {
     setTimeout(() => {
       const botMessage: Message = {
         id: messages.length + 2,
-        text: assistant.generateResponse(inputMessage),
+        text: getBotResponse(inputMessage),
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -100,15 +120,15 @@ const LiveChat = () => {
         
         {/* Notification Dot */}
         {!isOpen && (
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
-            <span className="text-xs text-white font-bold">!</span>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+            <span className="text-xs text-white font-bold">1</span>
           </div>
         )}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col animate-fade-in">
+        <div className="fixed bottom-24 right-6 z-50 w-96 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col animate-fade-in">
           {/* Header */}
           <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white p-4 rounded-t-2xl">
             <div className="flex items-center justify-between">
@@ -117,11 +137,11 @@ const LiveChat = () => {
                   <Bot className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">ServiceHub Assistant</h3>
-                  <p className="text-sm opacity-90">Your friendly freelance helper 😊</p>
+                  <h3 className="font-semibold">FreelanceHub Assistant</h3>
+                  <p className="text-sm opacity-90">Usually replies instantly</p>
                 </div>
               </div>
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
             </div>
           </div>
 
@@ -132,13 +152,13 @@ const LiveChat = () => {
                 key={message.id}
                 className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`max-w-xs px-4 py-3 rounded-2xl ${
+                <div className={`max-w-xs px-4 py-2 rounded-2xl ${
                   message.sender === 'user'
                     ? 'bg-cyan-500 text-white'
                     : 'bg-gray-100 text-gray-800'
                 }`}>
-                  <p className="text-sm whitespace-pre-line">{message.text}</p>
-                  <div className={`flex items-center space-x-1 mt-2 ${
+                  <p className="text-sm">{message.text}</p>
+                  <div className={`flex items-center space-x-1 mt-1 ${
                     message.sender === 'user' ? 'justify-end' : 'justify-start'
                   }`}>
                     {message.sender === 'bot' ? (
@@ -157,14 +177,13 @@ const LiveChat = () => {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 px-4 py-3 rounded-2xl">
+                <div className="bg-gray-100 px-4 py-2 rounded-2xl">
                   <div className="flex items-center space-x-1">
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
-                    <span className="text-xs text-gray-500 ml-2">ServiceHub Assistant is typing...</span>
                   </div>
                 </div>
               </div>
@@ -198,7 +217,7 @@ const LiveChat = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                placeholder="Ask me anything..."
+                placeholder="Type your message..."
                 className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm"
               />
               <button
@@ -209,9 +228,6 @@ const LiveChat = () => {
                 <Send className="w-4 h-4" />
               </button>
             </div>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              Powered by ServiceHub Assistant AI 🤖
-            </p>
           </div>
         </div>
       )}
