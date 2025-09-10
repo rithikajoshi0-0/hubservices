@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials';
 import AdvancedServices from './components/AdvancedServices';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingActionButtons from './components/FloatingActionButtons';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <FloatingActionButtons />
     </div>
   );
 }

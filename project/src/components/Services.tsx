@@ -82,23 +82,23 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
+              className={`relative bg-white rounded-2xl p-8 shadow-lg interactive-card hover-glow ${
                 service.popular ? 'ring-2 ring-cyan-500' : ''
               }`}
             >
               {service.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 animate-bounce">
+                  <span className="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-medium animate-glow">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-600 rounded-xl mb-6">
+              <div className="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-600 rounded-xl mb-6 morphing-shape animate-pulse-slow">
                 {service.icon}
               </div>
 
@@ -106,14 +106,14 @@ const Services = () => {
               <p className="text-gray-600 mb-4">{service.description}</p>
 
               <div className="mb-6">
-                <div className="text-2xl font-bold text-cyan-600 mb-2">{service.price}</div>
+                <div className="text-2xl font-bold text-cyan-600 mb-2 text-shimmer">{service.price}</div>
                 <div className="text-sm text-gray-500">Per project</div>
               </div>
 
               <ul className="space-y-2 mb-8">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-600">
-                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3"></div>
+                  <li key={featureIndex} className="flex items-center text-gray-600 animate-slide-in" style={{ animationDelay: `${featureIndex * 0.1}s` }}>
+                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3 animate-pulse-slow"></div>
                     {feature}
                   </li>
                 ))}
@@ -121,10 +121,10 @@ const Services = () => {
 
               <button
                 onClick={scrollToContact}
-                className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 ${
+                className={`w-full py-3 px-6 rounded-lg font-semibold interactive-button ripple-effect ${
                   service.popular
-                    ? 'bg-cyan-500 text-white hover:bg-cyan-600'
-                    : 'bg-gray-100 text-gray-700 hover:bg-cyan-100 hover:text-cyan-700'
+                    ? 'bg-cyan-500 text-white animate-glow'
+                    : 'bg-gray-100 text-gray-700 hover:bg-cyan-100 hover:text-cyan-700 hover-glow'
                 }`}
               >
                 Get Quote
@@ -134,14 +134,14 @@ const Services = () => {
         </div>
 
         {/* Student Discount Banner */}
-        <div className="mt-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl font-bold mb-4">Special Student Discount!</h3>
-          <p className="text-lg mb-6 opacity-90">
+        <div className="mt-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-center text-white animate-gradient interactive-card">
+          <h3 className="text-2xl font-bold mb-4 animate-bounce">Special Student Discount!</h3>
+          <p className="text-lg mb-6 opacity-90 animate-fade-in">
             Show your student ID and get 20% off on all services. We understand student budgets!
           </p>
           <button
             onClick={scrollToContact}
-            className="inline-flex items-center space-x-2 bg-white text-cyan-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+            className="inline-flex items-center space-x-2 bg-white text-cyan-600 px-8 py-3 rounded-lg font-semibold interactive-button animate-pulse-slow"
           >
             <span>Claim Student Discount</span>
           </button>
