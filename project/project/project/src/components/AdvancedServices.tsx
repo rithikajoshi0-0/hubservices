@@ -4,7 +4,6 @@ import PortfolioFilter from './PortfolioFilter';
 import LiveChat from './LiveChat';
 import PerformanceOptimizer from './PerformanceOptimizer';
 import SEOOptimizer from './SEOOptimizer';
-import ServiceHubBot from './ServiceHubBot';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/Tabs';
 
 const AdvancedServices = () => {
@@ -56,7 +55,24 @@ const AdvancedServices = () => {
           </TabsContent>
 
           <TabsContent value="chat" className="space-y-8">
-            <ServiceHubBot />
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">24/7 Live Chat Support</h3>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Get instant answers to your questions with our intelligent chat assistant. 
+                Available round the clock to help with quotes, project details, and general inquiries.
+              </p>
+              <div className="bg-cyan-50 rounded-xl p-6 max-w-md mx-auto">
+                <p className="text-sm text-cyan-800 mb-4">
+                  💬 The chat widget is available in the bottom-right corner of your screen. 
+                  Click the blue chat icon to start a conversation!
+                </p>
+                <div className="flex items-center justify-center space-x-4 text-sm text-cyan-700">
+                  <span>✓ Instant responses</span>
+                  <span>✓ Project quotes</span>
+                  <span>✓ 24/7 availability</span>
+                </div>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
 
