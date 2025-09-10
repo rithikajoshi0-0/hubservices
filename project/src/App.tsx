@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Blog from './components/Blog';
 import Testimonials from './components/Testimonials';
+import AdvancedServices from './components/AdvancedServices';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -17,6 +18,7 @@ function App() {
         <Hero />
         <About />
         <Services />
+        <AdvancedServices />
         <Portfolio />
         <Blog />
         <Testimonials />
