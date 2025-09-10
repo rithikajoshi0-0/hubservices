@@ -98,6 +98,14 @@ const Footer = () => {
                   Blog
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('advanced-services')}
+                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                >
+                  Tools
+                </button>
+              </li>
             </ul>
           </div>
 
