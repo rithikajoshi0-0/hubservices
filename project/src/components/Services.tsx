@@ -82,23 +82,23 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-2xl p-8 shadow-lg interactive-card hover-glow ${
+              className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-4 hover-glow animate-slide-up card ${
                 service.popular ? 'ring-2 ring-cyan-500' : ''
-              }`}
+              } animate-stagger-${index + 1}`}
             >
               {service.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 animate-bounce">
-                  <span className="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-medium animate-glow">
+                  <span className="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-600 rounded-xl mb-6 morphing-shape animate-pulse-slow">
+              <div className="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-600 rounded-xl mb-6 hover-scale animate-pulse">
                 {service.icon}
               </div>
 
@@ -106,14 +106,14 @@ const Services = () => {
               <p className="text-gray-600 mb-4">{service.description}</p>
 
               <div className="mb-6">
-                <div className="text-2xl font-bold text-cyan-600 mb-2 text-shimmer">{service.price}</div>
+                <div className="text-2xl font-bold text-cyan-600 mb-2 gradient-text">{service.price}</div>
                 <div className="text-sm text-gray-500">Per project</div>
               </div>
 
               <ul className="space-y-2 mb-8">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-600 animate-slide-in" style={{ animationDelay: `${featureIndex * 0.1}s` }}>
-                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3 animate-pulse-slow"></div>
+                  <li key={featureIndex} className="flex items-center text-gray-600 animate-slide-right" style={{ animationDelay: `${featureIndex * 0.1}s` }}>
+                    <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3 animate-pulse"></div>
                     {feature}
                   </li>
                 ))}
@@ -121,10 +121,10 @@ const Services = () => {
 
               <button
                 onClick={scrollToContact}
-                className={`w-full py-3 px-6 rounded-lg font-semibold interactive-button ripple-effect ${
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 ${
                   service.popular
-                    ? 'bg-cyan-500 text-white animate-glow'
-                    : 'bg-gray-100 text-gray-700 hover:bg-cyan-100 hover:text-cyan-700 hover-glow'
+                    ? 'bg-cyan-500 text-white hover:bg-cyan-600 hover-glow'
+                    : 'bg-gray-100 text-gray-700 hover:bg-cyan-100 hover:text-cyan-700 hover-scale'
                 }`}
               >
                 Get Quote
@@ -134,14 +134,14 @@ const Services = () => {
         </div>
 
         {/* Student Discount Banner */}
-        <div className="mt-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-center text-white animate-gradient interactive-card">
-          <h3 className="text-2xl font-bold mb-4 animate-bounce">Special Student Discount!</h3>
-          <p className="text-lg mb-6 opacity-90 animate-fade-in">
+        <div className="mt-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-8 text-center text-white animate-scale-in hover-glow">
+          <h3 className="text-2xl font-bold mb-4">Special Student Discount!</h3>
+          <p className="text-lg mb-6 opacity-90">
             Show your student ID and get 20% off on all services. We understand student budgets!
           </p>
           <button
             onClick={scrollToContact}
-            className="inline-flex items-center space-x-2 bg-white text-cyan-600 px-8 py-3 rounded-lg font-semibold interactive-button animate-pulse-slow"
+            className="inline-flex items-center space-x-2 bg-white text-cyan-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:-translate-y-1 hover-scale"
           >
             <span>Claim Student Discount</span>
           </button>

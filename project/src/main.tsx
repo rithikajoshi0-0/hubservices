@@ -4,7 +4,7 @@ import App from './App.tsx';
 import './index.css';
 import { initGA, trackPerformance, trackUserEngagement } from './utils/analytics';
 import { updateSEOMetadata, generateServiceStructuredData } from './utils/seo';
-import { initAllAnimations } from './utils/animations';
+import { initScrollAnimations } from './utils/animations';
 
 // Initialize analytics (replace with your actual GA measurement ID)
 // initGA('GA_MEASUREMENT_ID');
@@ -34,11 +34,10 @@ updateSEOMetadata({
 trackPerformance();
 trackUserEngagement();
 
-// Initialize animations after DOM is loaded
+// Initialize scroll animations
 document.addEventListener('DOMContentLoaded', () => {
-  initAllAnimations();
+  initScrollAnimations();
 });
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
