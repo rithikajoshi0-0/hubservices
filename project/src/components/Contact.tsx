@@ -56,33 +56,33 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="inline-flex items-center space-x-2 bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-medium mb-4 interactive-card animate-bounce">
             <Mail className="w-4 h-4" />
             <span>Let's Connect</span>
           </div>
           
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-slide-up">
             Ready to Start
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 text-shimmer">
               {' '}Your Project?
             </span>
           </h2>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Get a free quote within 24 hours. Let's discuss your project and bring your vision to life!
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+          <div className="lg:col-span-1 space-y-8 animate-slide-in">
+            <div className="bg-white rounded-2xl p-8 shadow-lg interactive-card hover-glow">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-shimmer">Get in Touch</h3>
               
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0">
+              <div className="space-y-6 stagger-animation">
+                <div className="flex items-start space-x-4 interactive-card">
+                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0 animate-pulse-slow">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
@@ -92,8 +92,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0">
+                <div className="flex items-start space-x-4 interactive-card">
+                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0 animate-pulse-slow" style={{ animationDelay: '0.2s' }}>
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
@@ -103,8 +103,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0">
+                <div className="flex items-start space-x-4 interactive-card">
+                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0 animate-pulse-slow" style={{ animationDelay: '0.4s' }}>
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
@@ -114,8 +114,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0">
+                <div className="flex items-start space-x-4 interactive-card">
+                  <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex-shrink-0 animate-pulse-slow" style={{ animationDelay: '0.6s' }}>
                     <Clock className="w-6 h-6" />
                   </div>
                   <div>
@@ -128,9 +128,9 @@ const Contact = () => {
             </div>
 
             {/* Student Discount Banner */}
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-6 text-white">
-              <h4 className="text-lg font-bold mb-2">🎓 Student Discount</h4>
-              <p className="mb-4 opacity-90">Show your student ID and get 20% off on all services!</p>
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-6 text-white animate-gradient interactive-card">
+              <h4 className="text-lg font-bold mb-2 animate-bounce">🎓 Student Discount</h4>
+              <p className="mb-4 opacity-90 animate-fade-in">Show your student ID and get 20% off on all services!</p>
               <div className="text-sm opacity-75">
                 Valid for college and university students across India
               </div>
@@ -138,20 +138,20 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
+          <div className="lg:col-span-2 animate-slide-in-right">
+            <div className="bg-white rounded-2xl p-8 shadow-lg interactive-card hover-glow">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-shimmer">Send Me a Message</h3>
               
               {isSubmitted ? (
-                <div className="text-center py-12">
-                  <div className="flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4">
+                <div className="text-center py-12 animate-scale-in">
+                  <div className="flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4 animate-bounce">
                     <CheckCircle className="w-8 h-8" />
                   </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Thank you!</h4>
-                  <p className="text-gray-600">Your message has been sent successfully. I'll get back to you within 24 hours!</p>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2 animate-fade-in">Thank you!</h4>
+                  <p className="text-gray-600 animate-fade-in" style={{ animationDelay: '0.2s' }}>Your message has been sent successfully. I'll get back to you within 24 hours!</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6 stagger-animation">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -164,7 +164,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg form-field focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                         placeholder="Enter your name"
                       />
                     </div>
@@ -180,7 +180,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg form-field focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -197,7 +197,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg form-field focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                         placeholder="+91 98765 43210"
                       />
                     </div>
@@ -212,7 +212,7 @@ const Contact = () => {
                         value={formData.service}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg form-field focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                       >
                         <option value="">Select a service</option>
                         <option value="logo-branding">Logo & Branding</option>
@@ -235,7 +235,7 @@ const Contact = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg form-field focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                     >
                       <option value="">Select budget range</option>
                       <option value="under-1000">Under ₹1,000</option>
@@ -258,19 +258,19 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200 resize-vertical"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg form-field focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-vertical"
                       placeholder="Tell me about your project, timeline, and any specific requirements..."
                     ></textarea>
                   </div>
 
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3 interactive-card">
                     <input
                       type="checkbox"
                       id="isStudent"
                       name="isStudent"
                       checked={formData.isStudent}
                       onChange={handleInputChange}
-                      className="w-5 h-5 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
+                      className="w-5 h-5 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded animate-pulse-slow"
                     />
                     <label htmlFor="isStudent" className="text-sm text-gray-700">
                       I'm a student (eligible for 20% discount)
@@ -279,7 +279,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-cyan-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-cyan-600 transition-colors duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                    className="w-full bg-cyan-500 text-white py-4 px-6 rounded-lg font-semibold interactive-button ripple-effect animate-glow flex items-center justify-center space-x-2"
                   >
                     <Send className="w-5 h-5" />
                     <span>Send Message & Get Quote</span>
@@ -291,19 +291,19 @@ const Contact = () => {
         </div>
 
         {/* Quick Contact Options */}
-        <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Prefer to reach out directly?</h3>
+        <div className="mt-16 text-center animate-fade-in">
+          <h3 className="text-xl font-semibold text-gray-900 mb-6 animate-slide-up">Prefer to reach out directly?</h3>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="mailto:hello@freelancehub.in"
-              className="inline-flex items-center space-x-2 bg-white text-gray-700 px-6 py-3 rounded-lg border border-gray-200 hover:border-cyan-300 hover:text-cyan-600 transition-colors duration-200"
+              className="inline-flex items-center space-x-2 bg-white text-gray-700 px-6 py-3 rounded-lg border border-gray-200 interactive-button hover:border-cyan-300 hover:text-cyan-600"
             >
               <Mail className="w-5 h-5" />
               <span>Email Me</span>
             </a>
             <a
               href="tel:+919876543210"
-              className="inline-flex items-center space-x-2 bg-white text-gray-700 px-6 py-3 rounded-lg border border-gray-200 hover:border-cyan-300 hover:text-cyan-600 transition-colors duration-200"
+              className="inline-flex items-center space-x-2 bg-white text-gray-700 px-6 py-3 rounded-lg border border-gray-200 interactive-button hover:border-cyan-300 hover:text-cyan-600"
             >
               <Phone className="w-5 h-5" />
               <span>Call Me</span>
